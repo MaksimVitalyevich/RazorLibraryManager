@@ -1,0 +1,9 @@
+﻿@model ModernBook
+
+@if(Model is not null)
+{
+	<div class="form-group">
+		<label asp-for="IsDigital" class="control-label"></label>
+		<input asp-for="IsDigital" class="form-control" name="CurrentBook.IsDigital"/>
+	</div>
+}

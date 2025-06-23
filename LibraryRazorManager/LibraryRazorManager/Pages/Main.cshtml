@@ -1,0 +1,40 @@
+﻿@page
+@using LibraryRazorManager.Pages
+@model IndexModel
+@{
+    ViewData["Title"] = "Library page";
+}
+
+<div class="bookshelf-container">
+    <h1 class="display-4">Public Library Domain</h1>
+    <p class="welcome-text">Welcome to "XXI Modern" Public Library! Please, choose your book types below to begin:</p>
+
+    <div class="bookshelf">
+        <button class="shelf-button historical" id="historicalbook_cat">
+            <span class="book-spine">
+                <span class="book-title">Historical Books</span>
+                <span class="open-text">Create new book...</span>
+            </span>
+        </button>
+        <button onclick="" class="shelf-button literature" id="modernbook_cat">
+            <span class="book-spine">
+                <span class="book-title">Modern Literature</span>
+                <span class="open-text">Create new book...</span>
+            </span>
+        </button>
+        <button onclick="" class="shelf-button guides" id="guidebook_cat">
+            <span class="book-spine">
+                <span class="book-title">Guide Books</span>
+                <span class="open-text">Create new book...</span>
+            </span>
+        </button>
+
+        <div class="shelf-wood"></div>
+    </div>
+
+    <div class="bookmark-note">
+        New here?
+        <a href="/Help" class="bookmark-link">Check out the Guide page</a> to understand how to work with books.
+    </div>
+</div>
+<script src="~/js/site.js"></script>

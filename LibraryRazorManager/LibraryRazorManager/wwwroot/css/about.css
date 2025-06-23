@@ -1,0 +1,79 @@
+﻿.proj-block {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Verdana', sans-serif;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.proj-basing {
+    background-color: #f0f8ff;
+    padding: 12px 16px;
+    border-left: 4px solid #1e90ff;
+    border-radius: 4px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.proj-status {
+    background-color: #f5f5dc;
+    color: #228B22;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+}
+
+.proj-desc {
+    background-color: #fafafa;
+    padding: 16px;
+    border-left: 4px solid #999;
+    border-radius: 4px;
+    font-family: Georgia, serif;
+    font-style: italic;
+}
+
+.proj-knownproblems {
+    position: relative;
+    padding: 16px;
+    border: 6px solid transparent;
+    background-color: #fff;
+    font-family: 'Stencil', 'Impact', sans-serif;
+    color: #000;
+    border-radius: 6px;
+    box-shadow: 0 0 0 6px #ffeb3b, 0 0 0 12px #000;
+}
+
+.proj-recommendations {
+    background-color: #e8f5e9;
+    padding: 16px;
+    border-left: 4px solid #4caf50;
+    border-radius: 4px;
+    font-family: 'Verdana', sans-serif;
+}
+
+.proj-authorizing {
+    background-color: #fffbea;
+    border: 2px solid #d3b673;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Baskerville Old Face', 'Comic Sans MS', cursive;
+    font-size: 15px;
+    color: #333;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+.proj-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+}
+
+.proj-block p {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.proj-block ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}

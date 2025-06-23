@@ -1,0 +1,10 @@
+﻿@model HistoricalBook
+
+@if(Model is not null)
+{
+	<div class="form-group">
+		<label asp-for="Genre" class="control-label"></label>
+		<input asp-for="Genre" class="form-control" name="CurrentBook.Genre" placeholder="Enter book genre..."/>
+		<span asp-validation-for="Genre" class="text-danger"></span>
+	</div>
+}

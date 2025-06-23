@@ -1,0 +1,81 @@
+﻿@page
+@model LibraryRazorManager.Pages.ManageGuidePageModel
+@{
+	ViewData["Title"] = "Managagement Guide";
+}
+
+<div class="manage-mainblock text-base">
+	<h1>Getting started with book management (data storaging):</h1>
+
+	<section class="manage-firststep">
+		<h2 class="manage-title">Let's get started!</h2>
+		<p>
+			In order to manage your own library how you want, you have to choose book type.
+			There are 3 variants: <i>Historical</i>, <i>Guide</i> & <i>Modern</i>.<br /> Simply pick one (book-like) button
+			and you'll be sent to book filling form. Example: 
+			<span class="inline-preview my-4">
+				<button class="shelfbutton-modern-sm">
+					<span class="book-spine-sm">
+						<span class="book-title-sm">Modern Literature</span>
+						<span class="open-text-sm">Create new book...</span>
+					</span>
+				</button>
+			</span>
+		</p>
+	</section>
+	<hr />
+	<section class="manage-secondstep">
+		<h2 class="manage-title">Book data form:</h2>
+		<p>
+			Once on the form, you need to fill all 5 main fields: <strong>ID</strong>, <strong>Title</strong>,
+			<strong>Author</strong>, <strong>Publication Year</strong>, <strong>Serial Number</strong>.<br />
+			Field example: 
+			<span class="inline-preview my-4">
+				<label class="bookform-label-sm">Title:</label>
+				<input type="text" readonly value="IT native problems" class="inline-input"/>
+			</span>
+			Also, there is a specific <i>last field</i> (depends on book type & requirement level). If <i>Modern</i> type is chosen,
+			you can select: 
+			<span class="inline-preview my-4">
+				<label class="bookform-specific-sm">IsDigital?</label>
+				<input type="checkbox" readonly value="true" class="inline-input"/>
+			</span> 
+			- that indicates the digital copy of book. <br />
+			<small><i>Note:</i> This field is optional for Modern books.</small><br />
+			Once you're done, hit the
+			<span class="inline-preview mx-1">
+				<button class="btn btn-primary">Save</button>
+			</span> 
+			button. And that's how you add/edit books!
+		</p>
+	</section>
+	<hr />
+	<section class="manage-finalstep">
+		<h2 class="manage-title">Book collections view:</h2>
+		<p>
+			After data confirmation, general table of <strong>All</strong> book types gets loaded.
+			In here, you can: view each of book category; edit already existing books; delete current book by <strong>ID</strong>;
+			sort books by definite category; search each book's <strong>Author</strong> name. To sort books by categories:
+			<span class="inline-preview my-4">
+				<select class="form-select-sm" value="All"></select>
+			</span>
+			You can search here:
+			<span class="inline-preview my-4">
+				<label class="bookview-searchfilter">Search:</label>
+				<input type="text" readonly value="Author name here..." class="inline-input"/>
+			</span>
+			Near each book element, you can 
+			<span class="inline-preview mx-1">
+				<button>Edit</button>
+			</span>
+			or 
+			<span class="inline-preview mx-1">
+				<button class="btn btn-danger">Delete</button>
+			</span>
+			. <br /> <small>
+				In order to keep adding new books, you must return to <strong>Main</strong> and again choose
+				book type you want! On book table you can ONLY edit or delete existing books!
+			</small>
+		</p>
+	</section>
+</div>

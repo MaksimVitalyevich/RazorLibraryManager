@@ -1,0 +1,102 @@
+﻿@page
+@model LibraryRazorManager.Pages.AboutModel
+@{
+	ViewData["Title"] = "About this Project...";
+}
+
+<div class="proj-block mx-auto px-4 py-6 text-base">
+	<h1 class="proj-title mb-6">World Modern Library XXI</h1>
+
+	<section class="proj-basing">
+		<h2 class="proj-title mb-2">What this project based on?</h2>
+		<p>
+			This project is based on <strong>ASP.NET Core 9 & Razor Pages</strong>. Uses C# as base language,
+			Razor Pages as architectural template and minimal Bootstrap styles. AbstractBookService & BookBase - used as basing
+			to separate book models by Categories.
+		</p>
+	</section>
+	<hr />
+	<section class="proj-status">
+		<h2 class="proj-title mb-2">Current Status</h2>
+		<p>
+			Project architecture is stabilized, consisting of AbstractBookService, BookBase & BookAggregator.
+			Formed 3 types of books: <i>Historical, Guide, Modern</i>. Fixed errors with 'BindProperty', generic-contexts, routing.
+			Project is ready for expansions & support.
+		</p>
+	</section>
+	<hr />
+	<section class="proj-desc">
+		<h2 class="proj-title mb-2"></h2>
+		<p>
+			<strong>"World Modern Library XXI century"</strong> is online-storage and aggregator for digital books,
+			it's goal to systemize and view access to literature of different milleniums or directions!
+			Interface is built on Razor Pages technology with clear category separation, each one has it's own
+			handler & view. Architecture allows easily scale project under new types of books.
+		</p>
+	</section>
+	<hr />
+	<section class="proj-knownproblems">
+		<h2 class="proj-title mb-2">Issues, accured during development...</h2>
+		<p>
+			<strong>1. Generic-models & Razor:</strong><br />
+			at this stage of development, while creating abstract-like models of Razor pages occured serious limitation:
+			Framework does not support work with generic-like templates of pages, especially while trying to transfer
+			data of template models straight to Razor. Trying to use generic-controllers & pages invoked exceptions
+			at the runtime compilation & Razor. That also affected base Services to manage books as well, preventing
+			universally instance objects with abstractions.
+		</p>
+		<p class="mt-2">
+			<strong>Resolved solution:</strong><br />
+			<strong>BookAggregatorService</strong> has been created. aggregator that allows manually connect all
+			needed services (<i>Historical, Guide, Modern</i>), separated by categories. Base services are however,
+			saved as basis, but are NOT used to create any objects directly. They serve as abstraction DI chain.
+		</p>
+		<br />
+		<p>
+			<strong>2. Book deletion by ID:</strong><br />
+			Originally, there already was a problem for book deletion, because they all stored in one common table.
+			Each record marked with prescribed own category. Formation of separate button for ID deletion turned out pointless:
+			that didn't provide comfort in usage & could occur errors while sending requests.
+		</p>
+		<p class="mt-2">
+			<strong>Resolved solution:</strong>
+			Idea to create <strong>dynamic deletion button</strong>. It generates near each book model inside common table.
+			Deletion proccess checks book category & ID of current chosen book. Additionaly, provided parameter <code>{id?}</code>
+			on page form declaration. That helps more accurately handle such operations if needed!
+		</p>
+		<br />
+		<p>
+			<strong>3. Dynamic formation of form pages & loss of specific data:</strong>
+			Each model has it's own additional specific field data, which must view ONLY when selecting accordingly book type
+			(ex: <code>GuideBook</code>). Although common data form generated correctly, after performing <code>OnPostSave()</code>
+			data from such fields would be lost, and as result happened saving of <code>null</code>/ That would raise critical
+			error <code>NullReferenceException</code> while trying to access those data.
+		</p>
+		<p class="mt-2">
+			<strong>Resolved solution:</strong>
+			<strong>Partial Views</strong> is a perfect concept of forming dynamic data! Pages without code, that simply form 
+			specific fields. Each book extends from common model <code>BookBase</code>, including all universal fields data.
+			Specific fields in that case, are connected in Razor-page through <code>&It;partial&gt;</code> with usage of
+			<code>Html.PartialAsync()</code>. That way, form stayed common, but dynamically get filled with needed fragments
+			depending on book type.
+		</p>
+	</section>
+	<hr />
+	<section class="proj-recommendations">
+		<h2 class="proj-title mb-2">Possible ideas</h2>
+		<ul class="list-disc ml-6">
+			<li>System of user marks or notations addition;</li>
+			<li>Integration of extern API (ex: Google Books);</li>
+			<li>Adaptive <strong>DarkMode</strong> for interface;</li>
+			<li>Multilanguage support;</li>
+		</ul>
+	</section>
+	<hr />
+	<section class="proj-authorizing">
+		<h2 class="proj-title mb-2">Authoring & creation period</h2>
+		<p>
+			Author: Maksim Vitalyevich
+			Period of active development: from <strong>15.06.2025</strong> to <strong>21.06.2025</strong>
+		</p>
+	</section>
+</div>

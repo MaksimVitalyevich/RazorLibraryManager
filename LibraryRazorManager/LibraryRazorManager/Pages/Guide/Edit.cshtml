@@ -1,0 +1,38 @@
+﻿@page "{id?}"
+@model LibraryRazorManager.Pages.Guide.EditModel
+@{
+	ViewData["Title"] = "Guide Edit Form";
+}
+
+<form method="post">
+    <input type="hidden" asp-for="CurrentBook.Category"/>
+    <input type="hidden" asp-for="CurrentBook.Id" />
+
+    <div class="form-group">
+        <label asp-for="CurrentBook.Title"></label>
+        <input asp-for="CurrentBook.Title" class="form-control" placeholder="Enter title..."/>
+        <span asp-validation-for="CurrentBook.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CurrentBook.Author"></label>
+        <input asp-for="CurrentBook.Author" class="form-control" placeholder="Enter author fullname..."/>
+        <span asp-validation-for="CurrentBook.Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CurrentBook.Publication"></label>
+        <input asp-for="CurrentBook.Publication" class="form-control" />
+        <span asp-validation-for="CurrentBook.Publication" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CurrentBook.Serial"></label>
+        <input asp-for="CurrentBook.Serial" class="form-control" placeholder="XXXXXXXXXX"/>
+        <span asp-validation-for="CurrentBook.Serial" class="text-danger"></span>
+    </div>
+
+    <partial name="PartialTemplates/_GuideBook" model="Model.CurrentBook" />
+
+    <button type="submit" asp-page-handler="Save" class="btn btn-success">Save</button>
+</form>

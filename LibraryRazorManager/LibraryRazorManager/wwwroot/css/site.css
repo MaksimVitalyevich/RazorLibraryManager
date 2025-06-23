@@ -1,0 +1,307 @@
+.main-header {
+    background: linear-gradient(to bottom, white, beige);
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.site-title {
+    background: linear-gradient(to right, #a67843, #d2b48c);
+    text-align: center;
+    color: #6b4226;
+    font-family: 'Georgia', serif;
+    font-size: 2.7rem;
+    font-weight: bold;
+    border-bottom: 2px solid #cbb38c;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+}
+
+.site-title::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin: 0;
+    background: repeating-linear-gradient(45deg, #8b5e3c, #8b5e3c 10px, #d2b48c 10px, #d2b48c 20px);
+}
+
+.site-title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    margin: 0;
+    background: repeating-linear-gradient(135deg, #8b5e3c, #8b5e3c 10px, #d2b48c 10px, #d2b48c 20px);
+}
+
+.main-nav a {
+    color: #9f7920;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.main-nav a:hover {
+    color: #f16f0e;
+    text-decoration: underline;
+}
+
+.main-footer {
+    background-color: #2f3e46;
+    color: #ccc;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.site-langselect {
+    background-color: aliceblue;
+    border: 1px solid #4d56a2;
+    color: darkcyan;
+    font-family: 'Georgia', sans-serif;
+    font-size: 1.2rem;
+    padding: 8px 12px;
+    display: inline-block;
+    position: absolute;
+    top: 16px;
+    right: 20px;
+}
+
+.bookshelf-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+}
+
+.welcome-text {
+    margin-bottom: 40px;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.bookshelf {
+    perspective: 1000px;
+    position: relative;
+    background: #8B4513; /* wood color */
+    padding: 30px 40px 70px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.shelf-button {
+    position: relative;
+    width: 180px;
+    height: 300px;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    perspective: 1000px;
+}
+
+.shelf-button:hover {
+        transform: translateY(-8px);
+}
+
+.shelf-button:active {
+        transform: translateY(-4px);
+}
+
+.book-spine {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 20px 8px;
+    border-radius: 4px;
+    box-shadow: inset -5px 0 10px rgba(0,0,0,0.2);
+    color: white;
+    text-align: center;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 0.5s;
+}
+
+.shelf-button:hover .book-spine {
+    transform: rotateY(15deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.historical .book-spine {
+    background: linear-gradient(to bottom, #8B0000, #6B0000);
+}
+
+.literature .book-spine {
+    background: linear-gradient(to bottom, #1E90FF, #0E70CC);
+}
+
+.guides .book-spine {
+    background: linear-gradient(to bottom, #2E8B57, #1E6B37);
+}
+
+.book-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    margin: 10px 0;
+}
+
+.open-text {
+    display: block;
+    background: rgba(255,255,255,0.2);
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+    writing-mode: horizontal-tb;
+    transform: none;
+    margin-top: auto;
+}
+
+.shelf-wood {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: #A0522D;
+    border-radius: 0 0 5px 5px;
+    box-shadow: inset 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.bookmark-note {
+    display: inline-block;
+    background: #f9f4d7;
+    border: 2px solid #dd2828;
+    padding: 10px 20px;
+    border-radius: 4px 20px 20px 4px;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    color: #5a4428;
+    cursor: pointer;
+    transition: width 0.3s ease, padding 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 180px;
+}
+
+.bookmark-note:hover {
+    width: 540px;
+    padding: 10px 60px;
+}
+
+.bookmark-link {
+    font-weight: bold;
+    color: #4a2c0f;
+    text-decoration: underline;
+}
+
+.bookmark-link:hover {
+    color: #7a5a2b;
+}
+
+.error-scroll-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #fdfaf5;
+    min-height: 70vh;
+}
+
+.error-scroll {
+    background: #f8f0dc;
+    border: 6px double #8b5e3c;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    padding: 40px;
+    max-width: 600px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    border-radius: 16px;
+    position: relative;
+}
+
+.error-scroll::before,
+.error-scroll::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, #d2b48c, #a0522d);
+}
+
+.error-scroll::before {
+    top: -30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.error-scroll::after {
+    bottom: -30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.error-title {
+    font-size: 28px;
+    color: #6b3e2e;
+    margin-bottom: 16px;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #4a2c1a;
+    margin-bottom: 24px;
+}
+
+.return-btn {
+    display: inline-block;
+    background-color: #8b5e3c;
+    color: #fff8e1;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease-in-out;
+}
+
+.return btn:hover {
+    background-color: #a47146;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: #fdfaf5;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1)
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fdfdf9;
+    color: #333;
+    margin: 0;
+}
+
+h1 {
+    color: #5D4037;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+label {
+
+}

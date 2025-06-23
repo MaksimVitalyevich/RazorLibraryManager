@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - XXI Modern Web-Library</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/about.css" />
+    <link rel="stylesheet" href="~/css/management.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" />
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="site-title">XXI Modern Web-Library</h1>
+            <nav class="main-nav">
+                <a href="/">Home</a>
+                <a href="/BookCards">Book list</a>
+                <a href="/ManageGuidePage">Book managing guide...</a>
+                <a href="/About">About</a>
+            </nav>
+        </div>
+        <section class="site-langselect">Language select:
+            <form id="langForm" asp-page="/Main" method="get" class="language-switcher">
+                <select name="culture" onchange="document.getElementById('langForm').submit();">
+                    <option value="en" selected>English</option>
+                    <option value="ru">Русский</option>
+                </select>
+            </form>
+        </section>
+    </header>
+    <main class="page-body container">
+        @RenderBody()
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 XXI Modern Web-Library. Creative website to manage your OWN books. All rights reserved.</p>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
