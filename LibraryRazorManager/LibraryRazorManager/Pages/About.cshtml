@@ -7,21 +7,34 @@
 <div class="proj-block mx-auto px-4 py-6 text-base">
 	<h1 class="proj-title mb-6">World Modern Library XXI</h1>
 
+	<section class="proj-status">
+		<h1>Project ChangeLog History:</h1>
+		<p>Current version of project: 2.0</p>
+		<h2 class="proj-title mb-2">Adds:</h2>
+		<ul>
+			<li> Removed <strong>ID</strong>. Now books are filtered by year publication + title;</li>
+			<li> Added <strong>BookEra</strong> cats. Now you can select precisely select by 2 filters: categories & time periods;</li>
+			<li> Added <strong>EraDefinitor</strong>, utility to help in matching year & title. Also detects allowed categories. Labels all era's;</li>
+			<li> Changed <strong>URL</strong> parameters to match new filtration methods;</li>
+			<li> UI rework & front-end logic;</li>
+			<li> Added condition for wrong URL query formations.</li>
+		</ul>
+		<h2 class="proj-title mb-2">Fixes:</h2>
+		<ul>
+			<li> Removed indexator for books;</li>
+			<li> Fixed incorrect <strong>URL</strong> parameter transitions between booklist & bookforms;</li>
+			<li> Fixed <strong>PhoneFormation</strong> for <i>Guide</i> books not displaying phone numbers correctly;</li>
+			<li> Fixed category selection, accidentally displaying <strong>All</strong> category;</li>
+			<li> Small logical mistakes fixed.</li>
+		</ul>
+	</section>
+
 	<section class="proj-basing">
 		<h2 class="proj-title mb-2">What this project based on?</h2>
 		<p>
 			This project is based on <strong>ASP.NET Core 9 & Razor Pages</strong>. Uses C# as base language,
 			Razor Pages as architectural template and minimal Bootstrap styles. AbstractBookService & BookBase - used as basing
 			to separate book models by Categories.
-		</p>
-	</section>
-	<hr />
-	<section class="proj-status">
-		<h2 class="proj-title mb-2">Current Status</h2>
-		<p>
-			Project architecture is stabilized, consisting of AbstractBookService, BookBase & BookAggregator.
-			Formed 3 types of books: <i>Historical, Guide, Modern</i>. Fixed errors with 'BindProperty', generic-contexts, routing.
-			Project is ready for expansions & support.
 		</p>
 	</section>
 	<hr />

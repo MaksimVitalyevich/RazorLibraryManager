@@ -1,4 +1,4 @@
-﻿@page "{id?}"
+﻿@page "{year:int}/{title}"
 @model LibraryRazorManager.Pages.Guide.EditModel
 @{
 	ViewData["Title"] = "Guide Edit Form";
@@ -6,30 +6,35 @@
 
 <form method="post">
     <input type="hidden" asp-for="CurrentBook.Category"/>
-    <input type="hidden" asp-for="CurrentBook.Id" />
 
     <div class="form-group">
-        <label asp-for="CurrentBook.Title"></label>
-        <input asp-for="CurrentBook.Title" class="form-control" placeholder="Enter title..."/>
-        <span asp-validation-for="CurrentBook.Title" class="text-danger"></span>
+        <label asp-for="CurrentBook.Era">Book era:</label>
+        <select asp-for="CurrentBook.Era" asp-items="Model.AvailableEra"></select>
+        <span asp-validation-for="CurrentBook.Era"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="CurrentBook.Author"></label>
-        <input asp-for="CurrentBook.Author" class="form-control" placeholder="Enter author fullname..."/>
-        <span asp-validation-for="CurrentBook.Author" class="text-danger"></span>
+        <label asp-for="CurrentBook.Title">Book title:</label>
+        <input asp-for="CurrentBook.Title" placeholder="Enter title..."/>
+        <span asp-validation-for="CurrentBook.Title"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="CurrentBook.Publication"></label>
-        <input asp-for="CurrentBook.Publication" class="form-control" />
-        <span asp-validation-for="CurrentBook.Publication" class="text-danger"></span>
+        <label asp-for="CurrentBook.Author">Book author:</label>
+        <input asp-for="CurrentBook.Author" placeholder="Enter author fullname..."/>
+        <span asp-validation-for="CurrentBook.Author"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="CurrentBook.Serial"></label>
-        <input asp-for="CurrentBook.Serial" class="form-control" placeholder="XXXXXXXXXX"/>
-        <span asp-validation-for="CurrentBook.Serial" class="text-danger"></span>
+        <label asp-for="CurrentBook.Publication">Publication year:</label>
+        <input asp-for="CurrentBook.Publication"/>
+        <span asp-validation-for="CurrentBook.Publication"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CurrentBook.Serial">Serial number:</label>
+        <input asp-for="CurrentBook.Serial" placeholder="XXXXXXXXXX"/>
+        <span asp-validation-for="CurrentBook.Serial"></span>
     </div>
 
     <partial name="PartialTemplates/_GuideBook" model="Model.CurrentBook" />

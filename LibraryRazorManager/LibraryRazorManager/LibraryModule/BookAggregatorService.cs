@@ -5,7 +5,7 @@ namespace LibraryRazorManager.LibraryModule
     public interface IBookAggregator
     {
         List<BookBase> GetAllBooks();
-        bool DeleteBook(int id);
+        bool DeleteBook(int year, string title);
     }
     public class BookAggregatorService(AbstractBookService<HistoricalBook> historicalService, 
         AbstractBookService<GuideBook> guideService, 
@@ -24,11 +24,11 @@ namespace LibraryRazorManager.LibraryModule
 
             return books;
         }
-        public bool DeleteBook(int id)
+        public bool DeleteBook(int year, string title)
         {
-            if (_historicalService.RemoveBook(id)) return true;
-            if (_guideService.RemoveBook(id)) return true;
-            if (_novelService.RemoveBook(id)) return true;
+            if (_historicalService.RemoveBook(year, title)) return true;
+            if (_guideService.RemoveBook(year, title)) return true;
+            if (_novelService.RemoveBook(year, title)) return true;
 
             return false;
         }

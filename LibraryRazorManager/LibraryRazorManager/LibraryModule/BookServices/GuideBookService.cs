@@ -14,7 +14,7 @@ namespace LibraryRazorManager.LibraryModule.BookServices
             Books.Add(new()
             {
                 Category = BookCategory.Guide,
-                Id = SetAutoID(),
+                Era = BookEra.GenZ,
                 Title = "Guide to create games on C++",
                 Author = "Michael Doyson",
                 PhoneData = 84992707359,
@@ -24,7 +24,7 @@ namespace LibraryRazorManager.LibraryModule.BookServices
             Books.Add(new()
             {
                 Category = BookCategory.Guide,
-                Id = SetAutoID(),
+                Era = BookEra.GenZ,
                 Title = "1C Guide",
                 PhoneData = 84957379257,
                 Publication = 2011,
@@ -35,16 +35,25 @@ namespace LibraryRazorManager.LibraryModule.BookServices
         public override GuideBook AddNewBook(GuideBook book)
         {
             book.Category = BookCategory.Guide;
-            book.Id = SetAutoID();
+            var era = BookEraDefinitor.MatchEra(book.Publication);
+            if (!BookEraDefinitor.IsCategoryAllowed(book.Category, era))
+                throw new InvalidOperationException("Cannot add book of this chosen period.");
+
+            if (GetBook(book.Publication, book.Title) is not null)
+                throw new InvalidOperationException("Book with such title & publication already exists.");
 
             Books.Add(book);
             return book;
         }
         public override bool UpdateBook(GuideBook book)
         {
-            var changedbook = GetBook(book.Id);
+            var era = BookEraDefinitor.MatchEra(book.Publication);
+            if (!BookEraDefinitor.IsCategoryAllowed(book.Category, era))
+                throw new InvalidOperationException("Cannot change book of this selected period.");
 
-            if (changedbook is not null && Books.Count == 0)
+            var changedbook = GetBook(book.Publication, book.Title);
+
+            if (changedbook is not null)
             {
                 changedbook.UpdateInfo(book);
                 return true;
@@ -52,11 +61,11 @@ namespace LibraryRazorManager.LibraryModule.BookServices
 
             return false;
         }
-        public override bool RemoveBook(int id)
+        public override bool RemoveBook(int year, string title)
         {
-            var removedbook = GetBook(id);
+            var removedbook = GetBook(year, title);
 
-            if (removedbook is not null && Books.Count == 0)
+            if (removedbook is not null)
             {
                 Books.Remove(removedbook);
                 return true;

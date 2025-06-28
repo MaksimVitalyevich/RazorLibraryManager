@@ -1,10 +1,10 @@
 ﻿@page
 @using LibraryModule
 @model LibraryRazorManager.Pages.BookCardsModel
-@{ int index = 0; }
 
 <form method="get" class="filterbooks-form">
 	<select asp-for="SelectedCategory" asp-items="Html.GetEnumSelectList<BookCategory>()" onchange="this.form.submit()"></select>
+	<select asp-for="SelectedEra" asp-items="Html.GetEnumSelectList<BookEra>()" onchange="this.form.submit()"></select>
 	<input type="text" name="AuthorQuery" value="@Model.AuthorQuery" placeholder="Author search"/>
 	<button type="submit">Search</button>
 </form>
@@ -22,22 +22,21 @@
 	<tbody>
 		@foreach (var book in Model.Books)
 		{
-			var bookID = $"book_{book.Id}_{index}";
+			var bookYearTitle = $"book_{book.Publication}-{book.Title.Replace(" ", "_")}";
 			<tr>
 				<td>@book.Category</td>
 				<td>@book.GetShortDescription()</td>
 				<td>
-					<button class="btn-bookfulldesc" type="button" onclick="ToggleBookInfo('@bookID')">Show details...</button>
-					<button class="btn-bookedit" type="button" onclick="gotoEditBook('@book.Category', @book.Id)">Edit @book.Title ?</button>
-					<form method="post" asp-page-handler="Delete" asp-route-id="@book.Id" onsubmit="return confirm('Delete this book <<@book.Title>>?');">
+					<button class="btn-bookfulldesc" type="button" onclick="ToggleBookInfo('@bookYearTitle')">Show details...</button>
+					<button class="btn-bookedit" type="button" onclick="gotoEditBook('@book.Category', @book.Publication, '@book.Title')">Edit @book.Title ?</button>
+					<form method="post" asp-page-handler="Delete" asp-route-year="@book.Publication" asp-route-title="@book.Title" onsubmit="return confirm('Delete this book <<@book.Title>>?');">
 						<button type="submit" class="btn btn-sm btn-danger">Delete</button>
 					</form>
 				</td>
 			</tr>
-			<tr id="@bookID" class="book-info-row" style="display:none;">
+			<tr id="@bookYearTitle" class="book-info-row" style="display:none;">
 				<td colspan="3">@book.BookInfo();</td>
 			</tr>
-			index++;
 		}
 	</tbody>
 </table>

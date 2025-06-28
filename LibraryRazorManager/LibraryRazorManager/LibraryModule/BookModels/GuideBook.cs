@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace LibraryRazorManager.LibraryModule.BookModels
+﻿namespace LibraryRazorManager.LibraryModule.BookModels
 {
     public class GuideBook : BookBase
     {

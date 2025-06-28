@@ -3,18 +3,18 @@
     public abstract class AbstractBookService<T> where T : BookBase
     {
         protected List<T> Books { get; } = new();
-        protected int IDIncrementor { get; set; } = 0;
 
         public AbstractBookService()
         {
             Books = new List<T>();
         }
-        protected virtual int SetAutoID() => IDIncrementor++;
         public virtual List<T> GetBooks() => Books;
-        public virtual T? GetBook(int id) => Books.FirstOrDefault(b => b.Id == id);
+        public virtual T? GetBook(int year, string title) => Books.FirstOrDefault(p => p.Publication == year && p.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+        public virtual List<T> GetBooksByPeriod(BookEra period) =>
+            [.. Books.Where(b => BookEraDefinitor.MatchEra(b.Publication) == period)];
 
         public abstract T AddNewBook(T book);
         public abstract bool UpdateBook(T book);
-        public abstract bool RemoveBook(int id);
+        public abstract bool RemoveBook(int year, string title);
     }
 }

@@ -1,6 +1,7 @@
 using LibraryRazorManager.LibraryModule;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LibraryRazorManager.Pages
 {
@@ -12,22 +13,52 @@ namespace LibraryRazorManager.Pages
         [BindProperty]
         public T CurrentBook { get; set; }
         public BookCategory BookCats { get; set; }
-        public abstract IActionResult OnGet(int? id);
+        public List<SelectListItem> AvailableEra { get; set; } = new();
+        [TempData]
+        public bool IsNotFound { get; set; }
+        public abstract IActionResult OnGet(int year, string title);
         public virtual IActionResult OnPostSave()
         {
             if (!ModelState.IsValid)
                 return Page();
 
-            if (CurrentBook.Id == 0)
+            if (string.IsNullOrEmpty(CurrentBook.Title) || CurrentBook.Publication <= 0)
             {
-                IsSuccessedResult = (_bookService.AddNewBook(CurrentBook)).Id != 0;
+                ModelState.AddModelError(string.Empty, "Title & Publication are required.");
+                AvailableEra = GetAllowedEras();
+                return Page();
+            }
+
+            var existingBook = _bookService.GetBook(CurrentBook.Publication, CurrentBook.Title);
+
+            if (existingBook is null)
+            {
+                try
+                {
+                    var added = _bookService.AddNewBook(CurrentBook);
+                    IsSuccessedResult = added is not null;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return Page();
+                }
             }
             else
             {
-                IsSuccessedResult = _bookService.UpdateBook(CurrentBook);
+                try
+                {
+                    IsSuccessedResult = _bookService.UpdateBook(CurrentBook);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                    return Page();
+                }
             }
 
             return RedirectToPage("/BookCards");
         }
+        public abstract List<SelectListItem> GetAllowedEras();
     }
 }

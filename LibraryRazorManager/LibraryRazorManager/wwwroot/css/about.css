@@ -16,11 +16,28 @@
 }
 
 .proj-status {
-    background-color: #f5f5dc;
-    color: #228B22;
-    padding: 12px 16px;
+    background-color: #1b1b1b;
+    color: #00ff00;
+    padding: 16px 20px;
     border-radius: 6px;
     font-family: 'Courier New', monospace;
+    border: 1px solid #00aa00;
+    box-shadow: 0 0 8px #00aa00 inset;
+}
+.proj-status h1,
+.proj-status h2 {
+    color: #7cfc00;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.proj-status ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1.2em;
+}
+.proj-status ul li::before {
+    content: "- ";
+    color: #00ff00;
 }
 
 .proj-desc {
